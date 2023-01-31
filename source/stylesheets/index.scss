@@ -1,0 +1,25 @@
+$black-color : black;
+
+body{
+    background-color: black;
+    color :white;
+}
+
+
+@mixin card($theme : DarkGray){
+    background: $theme;
+    box-shadow: 0 0 1px rgba($theme, .25);
+    color: #fff;
+}
+
+.addCard{
+    @include card;
+}
+.doneCard{
+    @include card($theme: green)
+}
+.failureCard{
+    @include card($theme: red)
+}
+
+
