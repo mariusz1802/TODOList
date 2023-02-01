@@ -10,6 +10,7 @@ $black-color : black;
 body{
     background-color: black;
     color :white;
+    font-family: 'Poor Richard';
 }
 
 
@@ -34,10 +35,8 @@ body{
     display: flex;
     flex-direction: column;
     background: linear-gradient(45deg,#FF00D5, #670000 );
-    height: 1200px;
-    margin: auto;
+    margin: 50px auto;
     border-radius: 20px;
-    align-content: center;
     align-items: center;
     padding: 40px;
 }
@@ -48,25 +47,86 @@ h3{
 
 
 input{
-    width: 500px;
-    height: 40px;
-    max-width: 100%;
     border-radius: 10px;
     font-size: 1.5rem;
     padding: 2px;
+    padding-left: 10px;
     color : grey;
     letter-spacing: .025rem;
+    width: 100%;
+    height: 40px;
+    border: none;
 }
+input:focus{
+    border: none;
+    outline: none;
+}
+
 
 #addBtn{
 border-radius: 50%;
-padding: 15px;
 width: 100px;
 height: 100px;
 font-size: 6rem;
 display: flex;
+align-content: center;
+padding: 0;
+align-items: center;
+justify-content: center;
+justify-self: flex-end;
 font-weight: 700;
 color: white;
-background: linear-gradient(45deg, #009218, #0CFF44);
+background: rgb(0, 199, 0);
+grid-column-start: 2;
 border: none;
+margin-left: -50px;
+padding-left: -20px;
+transition: .3s;
+font-family: 'Poor Richard';
+
+}
+
+#addBtn:hover{
+        background: rgb(143, 238, 0);
+        cursor: pointer;
+
+}
+
+.addTask{
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    width: 80%;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+
+}
+#clear{
+    width: 150px;
+    height: 40px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+    transition: .3s;
+    font-family: 'Poor Richard';
+
+}
+
+#clear:hover{
+    cursor: pointer;
+    background: darkgrey;
+}
+
+.task{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    background: linear-gradient(#AFAFAF, #E6E6E6);
+    padding: 15px 30px;
+    color: rgb(65, 65, 65);
+    border-radius: 10px;
+    margin: 10px 0;
+    font-size: 1.8rem;
+    font-family: 'Roboto';
 }

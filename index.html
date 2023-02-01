@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./build/stylesheets/index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./build/stylesheets/index.css" />
     <title>TODO List</title>
-
-</head>
-<body>
+  </head>
+  <body>
     <div class="toDoContainer">
-            <h2>TODO </h2>
-            <h3>LIST</h3>
-            <div class="addTask">
-                <input type="text">
-                 <button id="addBtn">+</button></div>
-                </div>
-                <button id="clear">CLEAR ALL</button>   
-                
+      <h2>TODO</h2>
+      <h3>LIST</h3>
+      <div class="addTask">
+        <input type="text" />
+        <button id="addBtn">+</button>
+      </div>
+      <button id="clear">CLEAR ALL</button>
+      <div class="task">
+          <div class="textTask">Wynieść śmieci</div>
+          <div class="buttonsContainer">
+            <button class="checkedButton">V</button>
+            <button class="failureButton">F</button>
+            <button class="deleteButton">D</button>
+          </div>
+  
+      </div>
+    </div>
+
+
+
     <script src="./script.js" />
-</body>
+  </body>
 </html>
