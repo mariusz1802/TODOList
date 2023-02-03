@@ -8,36 +8,26 @@ $black-color : black;
 }
 
 body{
-    background-color: black;
+    background-color: rgb(216, 216, 216);
     color :white;
     font-family: 'Poor Richard';
 }
 
 
-@mixin card($theme : DarkGray){
-    background: $theme;
-    box-shadow: 0 0 1px rgba($theme, .25);
-    color: #fff;
-}
 
-.addCard{
-    @include card;
-}
-.doneCard{
-    @include card($theme: green)
-}
-.failureCard{
-    @include card($theme: red)
-}
 
 .toDoContainer {
     width: 800px;
     display: flex;
     flex-direction: column;
     background: linear-gradient(45deg,#FF00D5, #670000 );
+    background: linear-gradient(45deg,#00d061, #023000 );
+    background: linear-gradient(45deg,#0d0072, #0973ff );
+    background: linear-gradient(45deg,#c900ec, #f60062 );
     margin: 50px auto;
     border-radius: 20px;
     align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding: 40px;
 }
 
@@ -48,7 +38,7 @@ h3{
 
 input{
     border-radius: 10px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 2px;
     padding-left: 10px;
     color : grey;
@@ -65,8 +55,8 @@ input:focus{
 
 #addBtn{
 border-radius: 50%;
-width: 100px;
-height: 100px;
+width:90px;
+height:90px;
 font-size: 6rem;
 display: flex;
 align-content: center;
@@ -76,20 +66,26 @@ justify-content: center;
 justify-self: flex-end;
 font-weight: 700;
 color: white;
-background: rgb(0, 199, 0);
+// background: rgb(0, 199, 0);
+background: linear-gradient(90deg, #12f319, transparent) #2bb105;
+background: linear-gradient(90deg, #374efd, transparent) #1f6dff;
 grid-column-start: 2;
 border: none;
-margin-left: -50px;
-padding-left: -20px;
-transition: .3s;
+margin-left: -60px;
+padding-left: -30px;
+transition: background-color 1s;
 font-family: 'Poor Richard';
 
 }
 
 #addBtn:hover{
-        background: rgb(143, 238, 0);
+        background-color: rgb(16, 10, 130);
         cursor: pointer;
+        transform: scale(1.02);
+}
 
+#addBtn:active{
+    transform: translateY(5px);
 }
 
 .addTask{
@@ -107,15 +103,18 @@ font-family: 'Poor Richard';
     font-size: 1.3rem;
     border-radius: 10px;
     border: none;
+    color: rgb(87, 87, 87);
     font-weight: 500;
     transition: .3s;
     font-family: 'Poor Richard';
+    background: rgb(178, 178, 178);
 
 }
 
 #clear:hover{
     cursor: pointer;
     background: darkgrey;
+    transform: scale(1.02);
 }
 
 .task{
@@ -123,10 +122,88 @@ font-family: 'Poor Richard';
     width: 90%;
     justify-content: space-between;
     background: linear-gradient(#AFAFAF, #E6E6E6);
-    padding: 15px 30px;
-    color: rgb(65, 65, 65);
+    padding: 5px 30px;
+    color: rgb(87, 87, 87);
     border-radius: 10px;
-    margin: 10px 0;
-    font-size: 1.8rem;
+    margin: 15px 0;
+    font-size: 1.4rem;
     font-family: 'Roboto';
+    align-items: center;
 }
+
+@mixin status($theme: linear-gradient(#46f163, #3bff35)){
+background: $theme;
+ color: rgb(102, 102, 102);;
+}
+
+
+
+
+.task.done{
+@include status;
+    #done{
+        background: rgb(66, 230, 66);
+        border: 2px solid white;
+    }
+}
+
+.task.cancel{
+    @include status($theme : linear-gradient(rgb(251, 83, 83), rgb(246, 47, 47)));
+    color: rgb(199, 198, 198);
+    #cancel{
+        background: red;
+        border: 2px solid white;
+    }
+}
+
+
+
+
+.buttonsContainer{
+    display: flex;
+}
+
+@mixin card($theme : DarkGray){
+    background: $theme;
+    box-shadow: 0 0 1px rgba($theme, .25);
+    color: #fff;
+}
+
+
+
+
+.addCard{
+    @include card;
+}
+.doneCard{
+    @include card($theme: green)
+}
+.failureCard{
+    @include card($theme: red)
+}
+
+
+
+.circleBtn{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    @include card;
+}
+
+.circleBtn:hover{
+    cursor: pointer;
+    background-color: #AFAFAF;
+    transform: scale(1.07);
+}
+
+.circleBtn:active{
+    transform: translateY(5px);
+}
+
+
+
