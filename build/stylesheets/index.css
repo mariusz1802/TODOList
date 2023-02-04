@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -14,10 +16,7 @@ body {
   width: 800px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(45deg, #FF00D5, #670000);
-  background: linear-gradient(45deg, #00d061, #023000);
-  background: linear-gradient(45deg, #0d0072, #0973ff);
-  background: linear-gradient(45deg, #c900ec, #f60062);
+  background: linear-gradient(45deg, #7f0095, #cf0053);
   margin: 50px auto;
   border-radius: 20px;
   align-items: center;
@@ -111,7 +110,7 @@ input:focus {
   display: flex;
   width: 90%;
   justify-content: space-between;
-  background: linear-gradient(#AFAFAF, #E6E6E6);
+  background: linear-gradient(#afafaf, #e6e6e6);
   padding: 5px 30px;
   color: rgb(87, 87, 87);
   border-radius: 10px;
@@ -177,12 +176,16 @@ input:focus {
 
 .circleBtn:hover {
   cursor: pointer;
-  background-color: #AFAFAF;
+  background-color: #afafaf;
   transform: scale(1.07);
 }
 
 .circleBtn:active {
   transform: translateY(5px);
+}
+
+.taskContainer {
+  width: 100%;
 }
 
 /*# sourceMappingURL=index.css.map */

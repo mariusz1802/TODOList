@@ -1,209 +1,189 @@
-$black-color : black;
+$black-color: black;
 
-
-*, *::before, *::after{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    background-color: rgb(216, 216, 216);
-    color :white;
-    font-family: 'Poor Richard';
+body {
+  background-color: rgb(216, 216, 216);
+  color: white;
+  font-family: "Poor Richard";
 }
-
-
-
 
 .toDoContainer {
-    width: 800px;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(45deg,#FF00D5, #670000 );
-    background: linear-gradient(45deg,#00d061, #023000 );
-    background: linear-gradient(45deg,#0d0072, #0973ff );
-    background: linear-gradient(45deg,#c900ec, #f60062 );
-    margin: 50px auto;
-    border-radius: 20px;
-    align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    padding: 40px;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(45deg, #7f0095, #cf0053);
+  margin: 50px auto;
+  border-radius: 20px;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 40px;
 }
 
-h3{
-    margin-bottom: 20px;
+h3 {
+  margin-bottom: 20px;
 }
 
-
-input{
-    border-radius: 10px;
-    font-size: 1.2rem;
-    padding: 2px;
-    padding-left: 10px;
-    color : grey;
-    letter-spacing: .025rem;
-    width: 100%;
-    height: 40px;
-    border: none;
+input {
+  border-radius: 10px;
+  font-size: 1.2rem;
+  padding: 2px;
+  padding-left: 10px;
+  color: grey;
+  letter-spacing: 0.025rem;
+  width: 100%;
+  height: 40px;
+  border: none;
 }
-input:focus{
-    border: none;
-    outline: none;
-}
-
-
-#addBtn{
-border-radius: 50%;
-width:90px;
-height:90px;
-font-size: 6rem;
-display: flex;
-align-content: center;
-padding: 0;
-align-items: center;
-justify-content: center;
-justify-self: flex-end;
-font-weight: 700;
-color: white;
-// background: rgb(0, 199, 0);
-background: linear-gradient(90deg, #12f319, transparent) #2bb105;
-background: linear-gradient(90deg, #374efd, transparent) #1f6dff;
-grid-column-start: 2;
-border: none;
-margin-left: -60px;
-padding-left: -30px;
-transition: background-color 1s;
-font-family: 'Poor Richard';
-
+input:focus {
+  border: none;
+  outline: none;
 }
 
-#addBtn:hover{
-        background-color: rgb(16, 10, 130);
-        cursor: pointer;
-        transform: scale(1.02);
+#addBtn {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  font-size: 6rem;
+  display: flex;
+  align-content: center;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  justify-self: flex-end;
+  font-weight: 700;
+  color: white;
+  // background: rgb(0, 199, 0);
+  background: linear-gradient(90deg, #12f319, transparent) #2bb105;
+  background: linear-gradient(90deg, #374efd, transparent) #1f6dff;
+  grid-column-start: 2;
+  border: none;
+  margin-left: -60px;
+  padding-left: -30px;
+  transition: background-color 1s;
+  font-family: "Poor Richard";
 }
 
-#addBtn:active{
-    transform: translateY(5px);
+#addBtn:hover {
+  background-color: rgb(16, 10, 130);
+  cursor: pointer;
+  transform: scale(1.02);
 }
 
-.addTask{
-    display: grid;
-    grid-template-columns: 6fr 1fr;
-    width: 80%;
-    align-items: center;
-    margin: auto;
-    justify-content: center;
-
-}
-#clear{
-    width: 150px;
-    height: 40px;
-    font-size: 1.3rem;
-    border-radius: 10px;
-    border: none;
-    color: rgb(87, 87, 87);
-    font-weight: 500;
-    transition: .3s;
-    font-family: 'Poor Richard';
-    background: rgb(178, 178, 178);
-
+#addBtn:active {
+  transform: translateY(5px);
 }
 
-#clear:hover{
-    cursor: pointer;
-    background: darkgrey;
-    transform: scale(1.02);
+.addTask {
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  width: 80%;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+}
+#clear {
+  width: 150px;
+  height: 40px;
+  font-size: 1.3rem;
+  border-radius: 10px;
+  border: none;
+  color: rgb(87, 87, 87);
+  font-weight: 500;
+  transition: 0.3s;
+  font-family: "Poor Richard";
+  background: rgb(178, 178, 178);
 }
 
-.task{
-    display: flex;
-    width: 90%;
-    justify-content: space-between;
-    background: linear-gradient(#AFAFAF, #E6E6E6);
-    padding: 5px 30px;
-    color: rgb(87, 87, 87);
-    border-radius: 10px;
-    margin: 15px 0;
-    font-size: 1.4rem;
-    font-family: 'Roboto';
-    align-items: center;
+#clear:hover {
+  cursor: pointer;
+  background: darkgrey;
+  transform: scale(1.02);
 }
 
-@mixin status($theme: linear-gradient(#46f163, #3bff35)){
-background: $theme;
- color: rgb(102, 102, 102);;
+.task {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  background: linear-gradient(#afafaf, #e6e6e6);
+  padding: 5px 30px;
+  color: rgb(87, 87, 87);
+  border-radius: 10px;
+  margin: 15px 0;
+  font-size: 1.4rem;
+  font-family: "Roboto";
+  align-items: center;
 }
 
-
-
-
-.task.done{
-@include status;
-    #done{
-        background: rgb(66, 230, 66);
-        border: 2px solid white;
-    }
+@mixin status($theme: linear-gradient(#46f163, #3bff35)) {
+  background: $theme;
+  color: rgb(102, 102, 102);
 }
 
-.task.cancel{
-    @include status($theme : linear-gradient(rgb(251, 83, 83), rgb(246, 47, 47)));
-    color: rgb(199, 198, 198);
-    #cancel{
-        background: red;
-        border: 2px solid white;
-    }
+.task.done {
+  @include status;
+  #done {
+    background: rgb(66, 230, 66);
+    border: 2px solid white;
+  }
 }
 
-
-
-
-.buttonsContainer{
-    display: flex;
+.task.cancel {
+  @include status($theme: linear-gradient(rgb(251, 83, 83), rgb(246, 47, 47)));
+  color: rgb(199, 198, 198);
+  #cancel {
+    background: red;
+    border: 2px solid white;
+  }
 }
 
-@mixin card($theme : DarkGray){
-    background: $theme;
-    box-shadow: 0 0 1px rgba($theme, .25);
-    color: #fff;
+.buttonsContainer {
+  display: flex;
 }
 
-
-
-
-.addCard{
-    @include card;
-}
-.doneCard{
-    @include card($theme: green)
-}
-.failureCard{
-    @include card($theme: red)
+@mixin card($theme: DarkGray) {
+  background: $theme;
+  box-shadow: 0 0 1px rgba($theme, 0.25);
+  color: #fff;
 }
 
-
-
-.circleBtn{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin: 2px;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    @include card;
+.addCard {
+  @include card;
+}
+.doneCard {
+  @include card($theme: green);
+}
+.failureCard {
+  @include card($theme: red);
 }
 
-.circleBtn:hover{
-    cursor: pointer;
-    background-color: #AFAFAF;
-    transform: scale(1.07);
+.circleBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  @include card;
 }
 
-.circleBtn:active{
-    transform: translateY(5px);
+.circleBtn:hover {
+  cursor: pointer;
+  background-color: #afafaf;
+  transform: scale(1.07);
 }
 
+.circleBtn:active {
+  transform: translateY(5px);
+}
 
-
+.taskContainer {
+  width: 100%;
+}
