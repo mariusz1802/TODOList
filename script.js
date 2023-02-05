@@ -1,7 +1,10 @@
 const input = document.querySelector("input");
 const addTaskBtn = document.querySelector("#addBtn");
 const taskCotnainer = document.querySelector(".taskContainer");
+const deleteBtns = document.querySelectorAll('#delete');
 
+
+const taskArr = [];
 class Task {
   addTask(taskName) {
     const taskDiv = document.createElement("div");
@@ -44,15 +47,49 @@ class Task {
     taskDiv.appendChild(taskTextDiv);
     taskDiv.appendChild(buttonContainer);
     taskTextDiv.appendChild(taskText);
+    taskCotnainer.childNodes.forEach((el, index)=> {
+      el.childNodes[0]      
+ })
+      
   }
   doneTask() {}
   cancelTask() {}
-  deleteTask() {}
+  deleteTask(numberTask) {
+    console.log(numberTask)
+    let nodeNumber = numberTask;
+
+    taskCotnainer.childeNodes.forEach((el, index) => {
+      console.log(el.childNodes[nodeNumber])
+    });
+  }
+
+
+    update() {
+
+      
+    }
+    
+
 }
 
 const task = new Task();
 
 addTaskBtn.addEventListener("click", () => {
-  console.log(input.value);
   task.addTask(input.value);
+  input.value="";
 });
+
+deleteBtns.forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    console.log("yo yo");
+      task.deleteTask(index);  
+      task.update();
+  })
+
+})
+
+
+
+
+
+
