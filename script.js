@@ -70,7 +70,6 @@ class Task {
     });
   }
 
-
     update() {
     const deleteBtns = document.querySelectorAll('#delete');
       return deleteBtns;
