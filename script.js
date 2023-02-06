@@ -1,7 +1,6 @@
 const input = document.querySelector("input");
 const addTaskBtn = document.querySelector("#addBtn");
 const taskCotnainer = document.querySelector(".taskContainer");
-const deleteBtns = document.querySelectorAll('#delete');
 
 
 const taskArr = [];
@@ -16,8 +15,11 @@ class Task {
     const circleBtnRemove = document.createElement("div");
 
     circleBtnCheck.classList.add("circleBtn");
+    circleBtnCheck.setAttribute('id', 'done')
     circleBtnFailure.classList.add("circleBtn");
+    circleBtnFailure.setAttribute('id', 'cancel')
     circleBtnRemove.classList.add("circleBtn");
+    circleBtnRemove.setAttribute('id', 'delete')
     buttonContainer.classList.add("buttonsContainer");
 
     const checkImg = document.createElement("img");
@@ -43,10 +45,16 @@ class Task {
     taskDiv.classList.add("task");
     taskTextDiv.classList.add("textTask");
 
-    taskCotnainer.appendChild(taskDiv);
+    // taskCotnainer.appendChild(taskDiv);
     taskDiv.appendChild(taskTextDiv);
     taskDiv.appendChild(buttonContainer);
     taskTextDiv.appendChild(taskText);
+
+    taskArr.push(taskDiv);
+
+    taskArr.forEach(el => {
+      taskCotnainer.appendChild(el)
+    })
     taskCotnainer.childNodes.forEach((el, index)=> {
       el.childNodes[0]      
  })
@@ -57,7 +65,6 @@ class Task {
   deleteTask(numberTask) {
     console.log(numberTask)
     let nodeNumber = numberTask;
-
     taskCotnainer.childeNodes.forEach((el, index) => {
       console.log(el.childNodes[nodeNumber])
     });
@@ -65,8 +72,8 @@ class Task {
 
 
     update() {
-
-      
+    const deleteBtns = document.querySelectorAll('#delete');
+      return deleteBtns;
     }
     
 
@@ -76,17 +83,19 @@ const task = new Task();
 
 addTaskBtn.addEventListener("click", () => {
   task.addTask(input.value);
-  input.value="";
+  task.update();
 });
 
-deleteBtns.forEach((btn, index) => {
-  btn.addEventListener('click', () => {
-    console.log("yo yo");
-      task.deleteTask(index);  
-      task.update();
-  })
 
+const deleteContainer = task.update();
+
+
+console.log(deleteContainer)
+
+deleteContainer.forEach(el=> {
+  console.log(el)
 })
+
 
 
 
