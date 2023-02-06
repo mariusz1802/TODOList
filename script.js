@@ -1,7 +1,9 @@
 const input = document.querySelector("input");
 const addTaskBtn = document.querySelector("#addBtn");
 const taskCotnainer = document.querySelector(".taskContainer");
-
+let doneBtn;
+let cancelBtn;
+let deleteBtn;
 
 const taskArr = [];
 class Task {
@@ -15,11 +17,11 @@ class Task {
     const circleBtnRemove = document.createElement("div");
 
     circleBtnCheck.classList.add("circleBtn");
-    circleBtnCheck.setAttribute('id', 'done')
+    circleBtnCheck.setAttribute("id", "done");
     circleBtnFailure.classList.add("circleBtn");
-    circleBtnFailure.setAttribute('id', 'cancel')
+    circleBtnFailure.setAttribute("id", "cancel");
     circleBtnRemove.classList.add("circleBtn");
-    circleBtnRemove.setAttribute('id', 'delete')
+    circleBtnRemove.setAttribute("id", "delete");
     buttonContainer.classList.add("buttonsContainer");
 
     const checkImg = document.createElement("img");
@@ -52,30 +54,23 @@ class Task {
 
     taskArr.push(taskDiv);
 
-    taskArr.forEach(el => {
-      taskCotnainer.appendChild(el)
-    })
-    taskCotnainer.childNodes.forEach((el, index)=> {
-      el.childNodes[0]      
- })
-      
-  }
-  doneTask() {}
-  cancelTask() {}
-  deleteTask(numberTask) {
-    console.log(numberTask)
-    let nodeNumber = numberTask;
-    taskCotnainer.childeNodes.forEach((el, index) => {
-      console.log(el.childNodes[nodeNumber])
+    taskArr.forEach((el) => {
+      taskCotnainer.appendChild(el);
     });
   }
+  deleteTask(number) {
+    console.log(`Number of: ${number}`);
+  }
+  cancelTask() {}
 
-    update() {
-    const deleteBtns = document.querySelectorAll('#delete');
-      return deleteBtns;
-    }
-    
+  update() {
+    input.value = "";
+    doneBtn = document.querySelectorAll("#done");
+    cancelBtn = document.querySelectorAll("#cancel");
+    deleteBtn = document.querySelectorAll("#delete");
 
+    checkSomething();
+  }
 }
 
 const task = new Task();
@@ -85,19 +80,23 @@ addTaskBtn.addEventListener("click", () => {
   task.update();
 });
 
+function checkSomething() {
+  if (taskArr) {
+    doneBtn.forEach((el, index) => {
+      el.addEventListener("click", () => {
+        console.log("done button pressed");
+      });
+    });
+    cancelBtn.forEach((el, index) => {
+      el.addEventListener("click", () => {
+        console.log("cancel button pressed");
+      });
+    });
 
-const deleteContainer = task.update();
-
-
-console.log(deleteContainer)
-
-deleteContainer.forEach(el=> {
-  console.log(el)
-})
-
-
-
-
-
-
-
+    deleteBtn.forEach((el, index) => {
+      el.addEventListener("click", () => {
+        task.deleteTask(index);
+      });
+    });
+  }
+}
