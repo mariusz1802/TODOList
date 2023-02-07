@@ -69,6 +69,9 @@ class Task {
   update() {
     input.value = "";
     circleBtn = document.querySelectorAll(".circleBtn");
+    cancelBtn = document.querySelectorAll("#cancel");
+    deleteBtn = document.querySelectorAll("#delete");
+    doneBtn = document.querySelectorAll("#done");
     buttonService();
   }
 }
@@ -82,23 +85,40 @@ addTaskBtn.addEventListener("click", () => {
 
 function buttonService() {
   if (taskArr) {
-    circleBtn.forEach((el, index) => {
-      el.addEventListener("click", (e) => {
-        switch (el.id) {
-          case "done":
-            console.log(e.target.name);
-            console.log("done btn");
-            break;
-          case "cancel":
-            console.log("cancel button pressed");
-            break;
-          case "delete":
-            task.deleteTask((index + 1) / 3 - 1);
-            break;
-          default:
-            console.log("cos nie zagralo");
-        }
+    doneBtn.forEach((el) => {
+      el.addEventListener("click", () => {
+        console.log("done clicked");
       });
     });
+
+    cancelBtn.forEach((el) => {
+      el.addEventListener("click", () => {
+        console.log("Cancel clicked");
+      });
+    });
+
+    deleteBtn.forEach((el) => {
+      el.addEventListener("click", () => {
+        console.log("delete clicked");
+      });
+    });
+
+    // circleBtn.forEach((el, index) => {
+    //   el.addEventListener("click", (e) => {
+    //     switch (e.target.alt) {
+    //       case "check":
+    //         console.log(e.target.alt);
+    //         break;
+    //       case "failure":
+    //         console.log("cancel button pressed");
+    //         break;
+    //       case "delete":
+    //         console.log("delete button pressed");
+    //         break;
+    //       default:
+    //         console.log("cos nie zagralo");
+    //     }
+    //   });
+    // });
   }
 }
