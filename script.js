@@ -1,9 +1,11 @@
 const input = document.querySelector("input");
 const addTaskBtn = document.querySelector("#addBtn");
 const taskCotnainer = document.querySelector(".taskContainer");
+const countArr = [1, 2, 3, 4, 5];
 let doneBtn;
 let cancelBtn;
 let deleteBtn;
+let circleBtn;
 
 const taskArr = [];
 class Task {
@@ -18,6 +20,7 @@ class Task {
 
     circleBtnCheck.classList.add("circleBtn");
     circleBtnCheck.setAttribute("id", "done");
+    circleBtnCheck.setAttribute("name", "done");
     circleBtnFailure.classList.add("circleBtn");
     circleBtnFailure.setAttribute("id", "cancel");
     circleBtnRemove.classList.add("circleBtn");
@@ -59,17 +62,14 @@ class Task {
     });
   }
   deleteTask(number) {
-    console.log(`Number of: ${number}`);
+    console.log("deleteButton");
   }
   cancelTask() {}
 
   update() {
     input.value = "";
-    doneBtn = document.querySelectorAll("#done");
-    cancelBtn = document.querySelectorAll("#cancel");
-    deleteBtn = document.querySelectorAll("#delete");
-
-    checkSomething();
+    circleBtn = document.querySelectorAll(".circleBtn");
+    buttonService();
   }
 }
 
@@ -80,22 +80,24 @@ addTaskBtn.addEventListener("click", () => {
   task.update();
 });
 
-function checkSomething() {
+function buttonService() {
   if (taskArr) {
-    doneBtn.forEach((el, index) => {
-      el.addEventListener("click", () => {
-        console.log("done button pressed");
-      });
-    });
-    cancelBtn.forEach((el, index) => {
-      el.addEventListener("click", () => {
-        console.log("cancel button pressed");
-      });
-    });
-
-    deleteBtn.forEach((el, index) => {
-      el.addEventListener("click", () => {
-        task.deleteTask(index);
+    circleBtn.forEach((el, index) => {
+      el.addEventListener("click", (e) => {
+        switch (el.id) {
+          case "done":
+            console.log(e.target.name);
+            console.log("done btn");
+            break;
+          case "cancel":
+            console.log("cancel button pressed");
+            break;
+          case "delete":
+            task.deleteTask((index + 1) / 3 - 1);
+            break;
+          default:
+            console.log("cos nie zagralo");
+        }
       });
     });
   }
