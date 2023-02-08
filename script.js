@@ -1,7 +1,6 @@
 const input = document.querySelector("input");
 const addTaskBtn = document.querySelector("#addBtn");
 const taskCotnainer = document.querySelector(".taskContainer");
-const countArr = [1, 2, 3, 4, 5];
 let doneBtn;
 let cancelBtn;
 let deleteBtn;
@@ -60,29 +59,20 @@ class Task {
     taskArr.forEach((el) => {
       taskCotnainer.appendChild(el);
     });
-
   }
   deleteTask(number) {
-    const manio =number++;
- console.log(`delete task ${manio}`)
- taskArr.splice(number)
-console.log(taskArr.splice(number))
-
-
+    console.log("delete pressed");
   }
-
 
   cancelTask() {}
 
   update() {
     input.value = "";
-    circleBtn = document.querySelectorAll(".circleBtn");
     cancelBtn = document.querySelectorAll("#cancel");
     deleteBtn = document.querySelectorAll("#delete");
     doneBtn = document.querySelectorAll("#done");
-
+    circleBtn = document.querySelectorAll(".circleBtn");
     buttonService();
-
   }
 }
 
@@ -93,10 +83,8 @@ addTaskBtn.addEventListener("click", () => {
   task.update();
 });
 
-
 function buttonService() {
   if (taskArr) {
-console.log(taskArr)
     circleBtn.forEach((el, index) => {
       el.addEventListener("click", () => {
         switch (el.id) {
@@ -107,7 +95,7 @@ console.log(taskArr)
             console.log("cancel button pressed");
             break;
           case "delete":
-            task.deleteTask(2)
+            task.deleteTask();
             break;
           default:
             console.log("something went wrong");
