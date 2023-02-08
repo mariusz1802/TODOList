@@ -60,10 +60,18 @@ class Task {
     taskArr.forEach((el) => {
       taskCotnainer.appendChild(el);
     });
+
   }
   deleteTask(number) {
-    console.log("deleteButton");
+    const manio =number++;
+ console.log(`delete task ${manio}`)
+ taskArr.splice(number)
+console.log(taskArr.splice(number))
+
+
   }
+
+
   cancelTask() {}
 
   update() {
@@ -72,7 +80,9 @@ class Task {
     cancelBtn = document.querySelectorAll("#cancel");
     deleteBtn = document.querySelectorAll("#delete");
     doneBtn = document.querySelectorAll("#done");
+
     buttonService();
+
   }
 }
 
@@ -83,42 +93,26 @@ addTaskBtn.addEventListener("click", () => {
   task.update();
 });
 
+
 function buttonService() {
   if (taskArr) {
-    doneBtn.forEach((el) => {
+console.log(taskArr)
+    circleBtn.forEach((el, index) => {
       el.addEventListener("click", () => {
-        console.log("done clicked");
+        switch (el.id) {
+          case "done":
+            console.log("done pressed");
+            break;
+          case "cancel":
+            console.log("cancel button pressed");
+            break;
+          case "delete":
+            task.deleteTask(2)
+            break;
+          default:
+            console.log("something went wrong");
+        }
       });
     });
-
-    cancelBtn.forEach((el) => {
-      el.addEventListener("click", () => {
-        console.log("Cancel clicked");
-      });
-    });
-
-    deleteBtn.forEach((el) => {
-      el.addEventListener("click", () => {
-        console.log("delete clicked");
-      });
-    });
-
-    // circleBtn.forEach((el, index) => {
-    //   el.addEventListener("click", (e) => {
-    //     switch (e.target.alt) {
-    //       case "check":
-    //         console.log(e.target.alt);
-    //         break;
-    //       case "failure":
-    //         console.log("cancel button pressed");
-    //         break;
-    //       case "delete":
-    //         console.log("delete button pressed");
-    //         break;
-    //       default:
-    //         console.log("cos nie zagralo");
-    //     }
-    //   });
-    // });
   }
 }
