@@ -85,7 +85,7 @@ addTaskBtn.addEventListener("click", () => {
 
 function buttonService() {
   if (taskArr) {
-    circleBtn.forEach((el, index) => {
+    circleBtn.forEach((el) => {
       el.addEventListener("click", () => {
         switch (el.id) {
           case "done":
