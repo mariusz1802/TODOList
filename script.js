@@ -1,10 +1,6 @@
 const input = document.querySelector("input");
 const addTaskBtn = document.querySelector("#addBtn");
 const taskCotnainer = document.querySelector(".taskContainer");
-let doneBtn;
-let cancelBtn;
-let deleteBtn;
-let circleBtn;
 
 const taskArr = [];
 class Task {
@@ -60,19 +56,15 @@ class Task {
       taskCotnainer.appendChild(el);
     });
   }
-  deleteTask(number) {
-    console.log("delete pressed");
+
+  deleteTask() {
+    taskCotnainer.removeChild(taskDiv);
   }
 
   cancelTask() {}
 
   update() {
     input.value = "";
-    cancelBtn = document.querySelectorAll("#cancel");
-    deleteBtn = document.querySelectorAll("#delete");
-    doneBtn = document.querySelectorAll("#done");
-    circleBtn = document.querySelectorAll(".circleBtn");
-    buttonService();
   }
 }
 
@@ -83,24 +75,6 @@ addTaskBtn.addEventListener("click", () => {
   task.update();
 });
 
-function buttonService() {
-  if (taskArr) {
-    circleBtn.forEach((el) => {
-      el.addEventListener("click", () => {
-        switch (el.id) {
-          case "done":
-            console.log("done pressed");
-            break;
-          case "cancel":
-            console.log("cancel button pressed");
-            break;
-          case "delete":
-            task.deleteTask();
-            break;
-          default:
-            console.log("something went wrong");
-        }
-      });
-    });
-  }
-}
+circleBtnRemove.addEventListener("click", () => {
+  task.deleteTask();
+});
