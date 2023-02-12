@@ -1,6 +1,5 @@
 const input = document.querySelector("input");
 const addTaskBtn = document.querySelector("#addBtn");
-const taskCotnainer = document.querySelector(".taskContainer");
 let doneBtn;
 let cancelBtn;
 let deleteBtn;
@@ -8,7 +7,15 @@ let circleBtn;
 
 const taskArr = [];
 class Task {
-  addTask(taskName) {
+  constructor(list) {
+    this.list = list;
+    this.todos = [];
+  }
+
+
+
+static  addTask(taskName) {
+    const taskCotnainer = document.querySelector(".taskContainer");
     const taskDiv = document.createElement("div");
     const taskTextDiv = document.createElement("div");
     const taskText = document.createTextNode(taskName);
@@ -49,20 +56,32 @@ class Task {
     taskDiv.classList.add("task");
     taskTextDiv.classList.add("textTask");
 
-    // taskCotnainer.appendChild(taskDiv);
     taskDiv.appendChild(taskTextDiv);
     taskDiv.appendChild(buttonContainer);
     taskTextDiv.appendChild(taskText);
+    taskCotnainer.appendChild(taskDiv)
+    return taskDiv;
 
-    taskArr.push(taskDiv);
+  }
+  static deleteTask(taskName) {
+  let taskCotnainer = document.querySelector(".taskContainer");
+  let childs = Array.from(taskCotnainer.childNodes);
+  const found = childs.find(el => el.innerText === taskName);
+  return found;
+  }
 
-    taskArr.forEach((el) => {
-      taskCotnainer.appendChild(el);
-    });
-  }
-  deleteTask(number) {
-    console.log("delete pressed");
-  }
+  
+addTodo(text){
+  this.todos.push(text)
+  this.list.appendChild(Task.addTask(text))
+}
+
+removeTodo(text){
+  let filter = this.todos.filter(i => i !== text);
+  this.list.removeChild(Task.deleteTask(text));
+  this.todos = filter;
+}
+
 
   cancelTask() {}
 
@@ -71,7 +90,6 @@ class Task {
     cancelBtn = document.querySelectorAll("#cancel");
     deleteBtn = document.querySelectorAll("#delete");
     doneBtn = document.querySelectorAll("#done");
-    circleBtn = document.querySelectorAll(".circleBtn");
     buttonService();
   }
 }
@@ -84,6 +102,7 @@ addTaskBtn.addEventListener("click", () => {
 });
 
 function buttonService() {
+  circleBtn = document.querySelectorAll(".circleBtn");
   if (taskArr) {
     circleBtn.forEach((el, index) => {
       el.addEventListener("click", () => {
