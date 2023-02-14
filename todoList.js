@@ -3,28 +3,29 @@ const addTaskBtn = document.querySelector("#addBtn");
 const taskCotnainer = document.querySelector(".taskContainer");
 
 class MakeTodoList {
-  constructor(todoList) {
-    this.todoList = todoList;
+  constructor(list) {
     this.todos = [];
+    this.toDoList = list;
   }
   static addtoList(text) {
-    let list = document.querySelector("#toDoContainer");
-    var li = document.createElement("li");
+    let container = document.querySelector(".toDoContainer");
+    let li = document.createElement("li");
     li.textContent = text;
-    list.appendChild(li);
+    container.appendChild(li)
     return li;
   }
 
   static removeFromList(text) {
-    let list = document.querySelector("#toDoContainer");
-    let childs = Array.from(list.childNodes);
+    let container = document.querySelector("#toDoContainer");
+    let childs = Array.from(container.childNodes);
     let item = childs.find((i) => i.innerText === text);
     return item;
   }
 
-  addTodo(text) {
-    this.todos.push(text);
-    this.todoList.appendChild(MakeTodoList.addtoList(text));
+  addTodo(value) {
+    let container = document.querySelector(".toDoContainer");
+    this.todos.push(value);
+    container.appendChild(MakeTodoList.addtoList(value));
   }
 
   removeTodo(text) {
@@ -32,18 +33,10 @@ class MakeTodoList {
     this.todoList(MakeTodoList.removeFromList(text));
     this.todos = filter;
   }
-
-  set DummyData(value) {
-    this.todos = value;
-    this.todos.map((i) => MakeTodoList.addtoList(i));
-  }
-  get getList() {
-    return this.todos;
-  }
 }
 
-const task = new MakeTodoList();
 
 addTaskBtn.addEventListener("click", () => {
+  let task = new MakeTodoList(input.value);
   task.addTodo(input.value);
 });

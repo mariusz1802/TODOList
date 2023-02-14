@@ -7,13 +7,9 @@ let circleBtn;
 
 const taskArr = [];
 class Task {
-  constructor(list) {
-    this.list = list;
+  constructor() {
     this.todos = [];
   }
-
-
-
 static  addTask(taskName) {
     const taskCotnainer = document.querySelector(".taskContainer");
     const taskDiv = document.createElement("div");
@@ -72,8 +68,10 @@ static  addTask(taskName) {
 
   
 addTodo(text){
+  const taskCotnainer = document.querySelector(".taskContainer");
   this.todos.push(text)
-  this.list.appendChild(Task.addTask(text))
+  taskCotnainer.appendChild(Task.addTask(text))
+  console.log(this.todos)
 }
 
 removeTodo(text){
@@ -84,42 +82,25 @@ removeTodo(text){
 
 
   cancelTask() {}
-
   update() {
     input.value = "";
     cancelBtn = document.querySelectorAll("#cancel");
     deleteBtn = document.querySelectorAll("#delete");
     doneBtn = document.querySelectorAll("#done");
-    buttonService();
   }
 }
 
 const task = new Task();
 
 addTaskBtn.addEventListener("click", () => {
-  task.addTask(input.value);
+  task.addTodo(input.value);
   task.update();
+
 });
 
-function buttonService() {
-  circleBtn = document.querySelectorAll(".circleBtn");
-  if (taskArr) {
-    circleBtn.forEach((el, index) => {
-      el.addEventListener("click", () => {
-        switch (el.id) {
-          case "done":
-            console.log("done pressed");
-            break;
-          case "cancel":
-            console.log("cancel button pressed");
-            break;
-          case "delete":
-            task.deleteTask();
-            break;
-          default:
-            console.log("something went wrong");
-        }
-      });
-    });
-  }
-}
+
+
+
+deleteBtn.addEventListener('click', ()=> {
+  console.log("delete clicked")
+})
