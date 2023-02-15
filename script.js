@@ -10,7 +10,7 @@ class Task {
   constructor() {
     this.todos = [];
   }
-static  addTask(taskName) {
+  static addTask(taskName) {
     const taskCotnainer = document.querySelector(".taskContainer");
     const taskDiv = document.createElement("div");
     const taskTextDiv = document.createElement("div");
@@ -55,31 +55,27 @@ static  addTask(taskName) {
     taskDiv.appendChild(taskTextDiv);
     taskDiv.appendChild(buttonContainer);
     taskTextDiv.appendChild(taskText);
-    taskCotnainer.appendChild(taskDiv)
+    taskCotnainer.appendChild(taskDiv);
     return taskDiv;
-
   }
   static deleteTask(taskName) {
-  let taskCotnainer = document.querySelector(".taskContainer");
-  let childs = Array.from(taskCotnainer.childNodes);
-  const found = childs.find(el => el.innerText === taskName);
-  return found;
+    let taskCotnainer = document.querySelector(".taskContainer");
+    let childs = Array.from(taskCotnainer.childNodes);
+    const found = childs.find((el) => el.innerText === taskName);
+    return found;
   }
 
-  
-addTodo(text){
-  const taskCotnainer = document.querySelector(".taskContainer");
-  this.todos.push(text)
-  taskCotnainer.appendChild(Task.addTask(text))
-  console.log(this.todos)
-}
+  addTodo(text) {
+    const taskCotnainer = document.querySelector(".taskContainer");
+    this.todos.push(text);
+    taskCotnainer.appendChild(Task.addTask(text));
+  }
 
-removeTodo(text){
-  let filter = this.todos.filter(i => i !== text);
-  this.list.removeChild(Task.deleteTask(text));
-  this.todos = filter;
-}
-
+  removeTodo(text) {
+    let filter = this.todos.filter((i) => i !== text);
+    this.list.removeChild(Task.deleteTask(text));
+    this.todos = filter;
+  }
 
   cancelTask() {}
   update() {
@@ -87,20 +83,66 @@ removeTodo(text){
     cancelBtn = document.querySelectorAll("#cancel");
     deleteBtn = document.querySelectorAll("#delete");
     doneBtn = document.querySelectorAll("#done");
+    buttonSet();
   }
 }
 
 const task = new Task();
 
-addTaskBtn.addEventListener("click", () => {
-  task.addTodo(input.value);
-  task.update();
+// addTaskBtn.addEventListener("click", () => {
+//   task.addTodo(input.value);
+//   task.update();
+// });
 
+function buttonSet() {
+  const deleteBtns = Array.from(deleteBtn);
+  console.log(deleteBtns);
+
+  deleteBtns.map((el, id) => {
+    el.addEventListener("click", (e) => {
+      console.log(e.target);
+      console.log(id);
+    });
+  });
+
+  // deleteBtn.addEventListener("click", (e) => {
+  //   console.log(e.target);
+  // });
+
+  // const taskCotnainer = document.querySelector(".taskContainer");
+  // const childs = Array.from(taskCotnainer.childNodes);
+
+  // childs.map((el, index) => {
+  //   el.addEventListener("click", (e) => {
+  //     console.log(e.target);
+  //   });
+  // });
+}
+
+const testBtn = document.querySelectorAll("#test");
+
+const testBtnArr = Array.from(testBtn);
+
+addTaskBtn.addEventListener("click", () => {
+  addElement(input.value);
 });
 
+function addElement(taskName) {
+  const taskContainer = document.querySelector(".taskContainer");
+  const newDiv = document.createElement("div");
+  newDiv.innerText = taskName;
+  taskContainer.appendChild(newDiv);
+}
 
+function deleteElement(taskName) {
+  const taskContainer = document.querySelector(".taskContainer");
+  const childArr = Array.from(taskContainer.childNodes);
+  childArr.map((el) => {
+    el.addEventListener("click", (e) => {
+      console.log("kliknieto");
+    });
+  });
+}
+const deleteBtutton = document.querySelector("#delete");
 
-
-deleteBtn.addEventListener('click', ()=> {
-  console.log("delete clicked")
-})
+deleteBtutton.addEventListener("click", deleteElement);

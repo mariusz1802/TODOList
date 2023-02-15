@@ -9,181 +9,101 @@ $black-color: black;
 }
 
 body {
-  background-color: rgb(216, 216, 216);
-  color: white;
-  font-family: "Poor Richard";
 }
 
-.toDoContainer {
-  width: 800px;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(45deg, #7f0095, #cf0053);
-  margin: 50px auto;
-  border-radius: 20px;
-  align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  padding: 40px;
-}
-
-h3 {
-  margin-bottom: 20px;
-}
-
-input {
-  border-radius: 10px;
-  font-size: 1.2rem;
-  padding: 2px;
-  padding-left: 10px;
-  color: grey;
-  letter-spacing: 0.025rem;
-  width: 100%;
-  height: 40px;
-  border: none;
-}
-input:focus {
-  border: none;
-  outline: none;
-}
-
-#addBtn {
-  border-radius: 50%;
-  width: 90px;
-  height: 90px;
-  font-size: 6rem;
-  display: flex;
-  align-content: center;
+ul {
+  margin: 0;
   padding: 0;
-  align-items: center;
-  justify-content: center;
-  justify-self: flex-end;
-  font-weight: 700;
-  color: white;
-  // background: rgb(0, 199, 0);
-  background: linear-gradient(90deg, #12f319, transparent) #2bb105;
-  background: linear-gradient(90deg, #374efd, transparent) #1f6dff;
-  grid-column-start: 2;
-  border: none;
-  margin-left: -60px;
-  padding-left: -30px;
-  transition: background-color 1s;
-  font-family: "Poor Richard";
 }
 
-#addBtn:hover {
-  background-color: rgb(16, 10, 130);
+ul li {
   cursor: pointer;
-  transform: scale(1.02);
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  user-select: none;
 }
 
-#addBtn:active {
-  transform: translateY(5px);
+ul li:nth-child(odd) {
+  background: #f9f9f9;
 }
 
-.addTask {
-  display: grid;
-  grid-template-columns: 6fr 1fr;
-  width: 80%;
-  align-items: center;
-  margin: auto;
-  justify-content: center;
-}
-#clear {
-  width: 150px;
-  height: 40px;
-  font-size: 1.3rem;
-  border-radius: 10px;
-  border: none;
-  color: rgb(87, 87, 87);
-  font-weight: 500;
-  transition: 0.3s;
-  font-family: "Poor Richard";
-  background: rgb(178, 178, 178);
+ul li:hover {
+  background: #ddd;
 }
 
-#clear:hover {
-  cursor: pointer;
-  background: darkgrey;
-  transform: scale(1.02);
-}
-
-.task {
-  display: flex;
-  width: 90%;
-  justify-content: space-between;
-  background: linear-gradient(#afafaf, #e6e6e6);
-  padding: 5px 30px;
-  color: rgb(87, 87, 87);
-  border-radius: 10px;
-  margin: 15px 0;
-  font-size: 1.4rem;
-  font-family: "Roboto";
-  align-items: center;
-}
-
-@mixin status($theme: linear-gradient(#46f163, #3bff35)) {
-  background: $theme;
-  color: rgb(102, 102, 102);
-}
-
-.task.done {
-  @include status;
-  #done {
-    background: rgb(66, 230, 66);
-    border: 2px solid white;
-  }
-}
-
-.task.cancel {
-  @include status($theme: linear-gradient(rgb(251, 83, 83), rgb(246, 47, 47)));
-  color: rgb(199, 198, 198);
-  #cancel {
-    background: red;
-    border: 2px solid white;
-  }
-}
-
-.buttonsContainer {
-  display: flex;
-}
-
-@mixin card($theme: DarkGray) {
-  background: $theme;
-  box-shadow: 0 0 1px rgba($theme, 0.25);
+ul li.checked {
+  background: #888;
   color: #fff;
+  text-decoration: line-through;
 }
 
-.addCard {
-  @include card;
-}
-.doneCard {
-  @include card($theme: green);
-}
-.failureCard {
-  @include card($theme: red);
+ul li.checked::before {
+  content: "";
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
 }
 
-.circleBtn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin: 2px;
-  display: flex;
-  justify-content: center;
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.header {
+  background-color: #f44336;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
   padding: 10px;
-  @include card;
+  float: left;
+  font-size: 16px;
 }
 
-.circleBtn:hover {
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
   cursor: pointer;
-  background-color: #afafaf;
-  transform: scale(1.07);
+  transition: 0.3s;
+  border-radius: 0;
 }
 
-.circleBtn:active {
-  transform: translateY(5px);
-}
-
-.taskContainer {
-  width: 100%;
+.addBtn:hover {
+  background-color: #bbb;
 }

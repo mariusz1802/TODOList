@@ -8,16 +8,19 @@
     <title>TODO List</title>
   </head>
   <body>
-    <div class="toDoContainer">
-      <h2>TODO</h2>
-      <h3>LIST</h3>
-      <div class="addTask">
-        <input type="text" />
-        <button id="addBtn">+</button>
-      </div>
-      <button id="clear">Clear All</button>
-      <div class="taskContainer"></div>
+    <div id="myDiv" class="header">
+      <h2>My To Do List</h2>
+      <input type="text" id="myInput" placeholder="Title..." />
+      <span class="addBtn" onclick="newElement()">ADD</span>
     </div>
+    <ul>
+      <li>Hit the gym</li>
+      <li class="Checked">Pay Bills</li>
+      <li>Meet George</li>
+      <li>But Eggs</li>
+      <li>Read a book</li>
+      <li>Organize office</li>
+    </ul>
 
     <script src="./script.js"></script>
   </body>
