@@ -23,44 +23,94 @@ for (i = 0; i < close.length; i++) {
   };
 }
 
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector("ul");
-list.addEventListener(
-  "click",
-  function (ev) {
-    if (ev.target.tagName === "LI") {
-      ev.target.classList.toggle("checked");
-    }
-  },
-  false
-);
+static  addTask(taskName) {
+    const taskCotnainer = document.querySelector(".taskContainer");
+    const taskDiv = document.createElement("div");
+    const taskTextDiv = document.createElement("div");
+    const taskText = document.createTextNode(taskName);
+    const buttonContainer = document.createElement("div");
+    const circleBtnCheck = document.createElement("div");
+    const circleBtnFailure = document.createElement("div");
+    const circleBtnRemove = document.createElement("div");
 
+    circleBtnCheck.classList.add("circleBtn");
+    circleBtnCheck.setAttribute("class", "done");
+    circleBtnCheck.setAttribute("name", "done");
+    circleBtnFailure.classList.add("circleBtn");
+    circleBtnFailure.setAttribute("class", "cancel");
+    circleBtnRemove.classList.add("circleBtn");
+    circleBtnRemove.setAttribute("class", "delete");
+    buttonContainer.classList.add("buttonsContainer");
 
-const addBtn = document.querySelector('.addBtn');
+    const checkImg = document.createElement("img");
+    checkImg.src = "./icons/check.svg";
+    checkImg.alt = "check";
+
+    const failureImg = document.createElement("img");
+    failureImg.src = "./icons/cancel.svg";
+    failureImg.alt = "failure";
+
+    const deleteImg = document.createElement("img");
+    deleteImg.src = "./icons/bin.svg";
+    deleteImg.alt = "delete";
+
+    buttonContainer.appendChild(circleBtnCheck);
+    buttonContainer.appendChild(circleBtnFailure);
+    buttonContainer.appendChild(circleBtnRemove);
+
+    circleBtnCheck.appendChild(checkImg);
+    circleBtnFailure.appendChild(failureImg);
+    circleBtnRemove.appendChild(deleteImg);
+
+    taskDiv.classList.add("task");
+    taskTextDiv.classList.add("textTask");
+
+    taskDiv.appendChild(taskTextDiv);
+    taskDiv.appendChild(buttonContainer);
+    taskTextDiv.appendChild(taskText);
+    taskCotnainer.appendChild(taskDiv)
+    return taskDiv;
+
+  }
+  static deleteTask(taskName) {
+  let taskCotnainer = document.querySelector(".taskContainer");
+  let childs = Array.from(taskCotnainer.childNodes);
+  const found = childs.find(el => el.innerText === taskName);
+  return found;
+  }
+
+  
+addTodo(text){
+  const taskCotnainer = document.querySelector(".taskContainer");
+
+  this.todos.push(text)
+  taskCotnainer.appendChild(Task.addTask(text))
+}
+
+removeTodo(text){
+  let filter = this.todos.filter(i => i !== text);
+  this.list.removeChild(Task.deleteTask(text));
+  this.todos = filter;
+}
 
 
 
 addBtn.addEventListener('click', newElement)
 
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === "") {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
+  update() {
+    input.value = "";
+    cancelBtn = document.getElementsByClassName("cancel");
+    deleteBtn = document.getElementsByClassName("delete");
+    doneBtn = document.getElementsByClassName("done");
+    buttonService();
   }
 
   inputValue = "";
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
+addTaskBtn.addEventListener("click", () => {
+  task.addTodo(input.value);
+  task.update();
+});
 
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function () {

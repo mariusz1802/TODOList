@@ -22,10 +22,9 @@ class MakeTodoList {
     return item;
   }
 
-  addTodo(value) {
-    let container = document.querySelector(".toDoContainer");
-    this.todos.push(value);
-    container.appendChild(MakeTodoList.addtoList(value));
+  addTodo(text) {
+    this.todos.push(text);
+    this.todoList.appendChild(addtoList(text));
   }
 
   removeTodo(text) {
