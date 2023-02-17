@@ -12,8 +12,6 @@ class Task {
     this.todos = [];
   }
 
-
-
 static  addTask(taskName) {
     const taskCotnainer = document.querySelector(".taskContainer");
     const taskDiv = document.createElement("div");
@@ -25,12 +23,12 @@ static  addTask(taskName) {
     const circleBtnRemove = document.createElement("div");
 
     circleBtnCheck.classList.add("circleBtn");
-    circleBtnCheck.setAttribute("id", "done");
+    circleBtnCheck.setAttribute("class", "done");
     circleBtnCheck.setAttribute("name", "done");
     circleBtnFailure.classList.add("circleBtn");
-    circleBtnFailure.setAttribute("id", "cancel");
+    circleBtnFailure.setAttribute("class", "cancel");
     circleBtnRemove.classList.add("circleBtn");
-    circleBtnRemove.setAttribute("id", "delete");
+    circleBtnRemove.setAttribute("class", "delete");
     buttonContainer.classList.add("buttonsContainer");
 
     const checkImg = document.createElement("img");
@@ -72,8 +70,10 @@ static  addTask(taskName) {
 
   
 addTodo(text){
+  const taskCotnainer = document.querySelector(".taskContainer");
+
   this.todos.push(text)
-  this.list.appendChild(Task.addTask(text))
+  taskCotnainer.appendChild(Task.addTask(text))
 }
 
 removeTodo(text){
@@ -87,9 +87,9 @@ removeTodo(text){
 
   update() {
     input.value = "";
-    cancelBtn = document.querySelectorAll("#cancel");
-    deleteBtn = document.querySelectorAll("#delete");
-    doneBtn = document.querySelectorAll("#done");
+    cancelBtn = document.getElementsByClassName("cancel");
+    deleteBtn = document.getElementsByClassName("delete");
+    doneBtn = document.getElementsByClassName("done");
     buttonService();
   }
 }
@@ -97,7 +97,7 @@ removeTodo(text){
 const task = new Task();
 
 addTaskBtn.addEventListener("click", () => {
-  task.addTask(input.value);
+  task.addTodo(input.value);
   task.update();
 });
 

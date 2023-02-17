@@ -24,7 +24,7 @@ class MakeTodoList {
 
   addTodo(text) {
     this.todos.push(text);
-    this.todoList.appendChild(MakeTodoList.addtoList(text));
+    this.todoList.appendChild(addtoList(text));
   }
 
   removeTodo(text) {
