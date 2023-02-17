@@ -3,13 +3,15 @@ var myNodelist = document.getElementsByTagName("LI");
 console.log(myNodelist);
 var i;
 
-for (i = 0; i < myNodelist.length; i++) {
+const arrNode = Array.from(myNodelist);
+
+ arrNode.forEach(el =>{
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
   span.className = "close";
   span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
+  el.appendChild(span);
+})
 
 // Click on a close button to hide the current list item
 var close = document.getElementsByClassName("close");
@@ -32,6 +34,13 @@ list.addEventListener(
   },
   false
 );
+
+
+const addBtn = document.querySelector('.addBtn');
+
+
+
+addBtn.addEventListener('click', newElement)
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
