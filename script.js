@@ -56,9 +56,11 @@ static  addTask(taskName) {
     taskDiv.appendChild(buttonContainer);
     taskTextDiv.appendChild(taskText);
     taskCotnainer.appendChild(taskDiv)
+    this.todos.appendChild(taskDiv);
     return taskDiv;
-
   }
+
+
   static deleteTask(taskName) {
   let taskCotnainer = document.querySelector(".taskContainer");
   let childs = Array.from(taskCotnainer.childNodes);
@@ -81,7 +83,11 @@ removeTodo(text){
 }
 
 
-  cancelTask() {}
+  cancelTask() {
+
+
+    
+  }
   update() {
     input.value = "";
     cancelBtn = document.querySelectorAll("#cancel");
@@ -100,7 +106,3 @@ addTaskBtn.addEventListener("click", () => {
 
 
 
-
-deleteBtn.addEventListener('click', ()=> {
-  console.log("delete clicked")
-})
