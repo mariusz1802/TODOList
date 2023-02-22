@@ -185,4 +185,8 @@ input:focus {
   transform: translateY(5px);
 }
 
+#myUl {
+  width: 100%;
+}
+
 /*# sourceMappingURL=index.css.map */
